@@ -30,5 +30,9 @@ https://aviation-edge.com/flight-schedule-and-timetable-of-airlines-and-airports
 
 https://aviation-edge.com/nearby-airport-and-city-api/
 
+https://partners.skyscanner.net/affiliates/travel-apis
+
+
 - Geolocation 
 
+gurgle murps
