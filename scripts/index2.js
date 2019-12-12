@@ -3,6 +3,8 @@ let currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplac
 let placeID = '';
 let currentLocationDetails = '';
 let placeDetails = '';
+// cors anywhere
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 // placeID from JSON response
@@ -17,8 +19,13 @@ function placeIDToDetails (placeID) {
     console.log(currentLocationDetails);
 }
 /// append that ^ to getUserIP as .then
+let goodEnough = '';
+function promiseRemove(promiseData) {
+    goodEnough = promiseData;
+}
+
 function tryTHIS() {
-    placeDetails = fetch(currentLocationDetails).then(r=>r.json());
+    placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
 }
 
 // let fart = currentLocationToPlaceID(sampleResponseFirstFetch)
@@ -31,3 +38,26 @@ let sampleResponseFirstFetch = {
     ],
     "status": "OK"
  }
+
+
+ let testOne;
+ let testTwo;
+ function defineOne() {
+    testOne = currentLocationToPlaceID(sampleResponseFirstFetch);
+ }
+ function defineTwo() {
+    currentLocationDetails = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&place_id=ChIJ7wzsxeFSwokRhvLXxTe087M"
+ }
+
+ /*
+
+ Dear diary, 
+ before you forget, here's the formula to get it working:
+
+    defineTwo()
+    tryTHIS()
+    /////goodEnough is the answer you want
+
+ Refactor it in the morning. 
+
+ */
