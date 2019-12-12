@@ -6,6 +6,8 @@ let todayDate = '';
 let skyscannerServer = '';
 const geoIPServer = `https://api.ipdata.co/?api-key=${ipLookupAPI}`;
 let userIP = '';
+let userLat = '';
+let userLong = '';
 
 // Get random number to select destination airport from object (airportCodes) and dave to randAirportNum variable
 function getRandomInt(min, max) {
@@ -28,8 +30,11 @@ function getUserIP() {
     fetch(geoIPServer)
         .then(r => r.json())
         .then(obj => {
+            userLat = obj.latitude;
+            userLong = obj.longitude;
             userIP = obj.ip;
         })
+        
     return userIP;
 }
 
@@ -81,6 +86,7 @@ function getQuotes() {
 
 // Main function to run
 function main() {
+    getUserIP();
     todayDate = getTodayDate();
     getRandomAirport();
     getQuotes();
