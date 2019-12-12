@@ -16,10 +16,10 @@ function getRandomInt(min, max) {
 
 // Get todays date and save to todayDate variable
 function getTodayDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
     return yyyy + '-' + mm + '-' + dd
 }
 
@@ -41,7 +41,7 @@ function getRandomAirport() {
 
 }
 
-// Checks for quotes. If no quotes avaliable, check another airport
+// Checks for quotes. If no quotes avaliable, check another airport. Once found, sends to showFlightQuotes
 function checkForQuotes(obj) {
     if (obj['Quotes'].length === 0) {
         console.log('No flights avaliable. Getting new airport.')
@@ -56,11 +56,11 @@ function checkForQuotes(obj) {
 
 // Shows the flight quotes
 function showFlightQuotes(obj) {
-    // console.log(obj);
+    console.log(obj);
     console.log(`From: ${obj['Places']['0']['CityName']}`)
     console.log(`To: ${obj['Places']['1']['CityName']}`)
     for (quote of obj['Quotes']) {
-        // console.log(quote);
+        console.log(quote);
         console.log(`Minimum Price: $${quote['MinPrice']}`);
         const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
         // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
