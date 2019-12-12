@@ -23,7 +23,7 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-// Check user IP 
+// Gets the user's IP address from their machine using ipdata.co API
 function getUserIP() {
     fetch(geoIPServer)
         .then(r => r.json())
@@ -33,7 +33,7 @@ function getUserIP() {
     return userIP;
 }
 
-// Uses randAirportNum to get airport from airportCodes object
+// Runs getRandomInt to use as lookup for airportCodes object. Sets variables for skyscannerServer URL
 function getRandomAirport() {
     randAirportNum = getRandomInt(0, 50);
     destAirport = airportCodes[randAirportNum]['iata'];
@@ -41,7 +41,7 @@ function getRandomAirport() {
 
 }
 
-// Shows Information for flight quotes. If no quotes avaliable, check another airport
+// Checks for quotes. If no quotes avaliable, check another airport
 function checkForQuotes(obj) {
     if (obj['Quotes'].length === 0) {
         console.log('No flights avaliable. Getting new airport.')
@@ -52,9 +52,9 @@ function checkForQuotes(obj) {
     } else {
         console.log('Unknown Error.')
     }
-
 }
 
+// Shows the flight quotes
 function showFlightQuotes(obj) {
     // console.log(obj);
     console.log(`From: ${obj['Places']['0']['CityName']}`)
@@ -68,7 +68,7 @@ function showFlightQuotes(obj) {
     }
 }
 
-// Gets quotes from server and console.logs the object
+// Gets quotes from server and sends object to checkForQuotes
 function getQuotes() {
     fetch(skyscannerServer, {
         headers: {
@@ -79,6 +79,7 @@ function getQuotes() {
         .then(checkForQuotes)
 }
 
+// Main function to run
 function main() {
     todayDate = getTodayDate();
     getRandomAirport();
