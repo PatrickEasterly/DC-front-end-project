@@ -7,7 +7,7 @@ let skyscannerServer = '';
 const geoIPServer = `https://api.ipdata.co/?api-key=${ipLookupAPI}`;
 let userIP = '';
 
-// Get random number to select destination airport from object (airportCodes) and dave to randAirportNum variable
+// Get random number to select destination airport from object (destAirports) and save to randAirportNum variable
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -33,11 +33,11 @@ function getUserIP() {
     return userIP;
 }
 
-// Runs getRandomInt to use as lookup for airportCodes object. Sets variables for skyscannerServer URL
+// Runs getRandomInt to use as lookup for destAirports object. Sets variables for skyscannerServer URL
 function getRandomAirport() {
     randAirportNum = -1
     randAirportNum = getRandomInt(0, 50);
-    destAirport = airportCodes[randAirportNum]['iata'];
+    destAirport = destAirports[randAirportNum]['iata'];
     skyscannerServer = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${originAirport}-sky/${destAirport}-sky/${todayDate}`;
 
 }

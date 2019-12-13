@@ -1,4 +1,4 @@
-const airportCodes = {
+const destAirports = {
         "0": {
         "icao": "KATL",
         "iata": "ATL",
