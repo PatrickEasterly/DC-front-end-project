@@ -35,17 +35,36 @@ function getUserIP() {
 
 // Runs getRandomInt to use as lookup for airportCodes object. Sets variables for skyscannerServer URL
 function getRandomAirport() {
+    randAirportNum = -1
     randAirportNum = getRandomInt(0, 50);
     destAirport = airportCodes[randAirportNum]['iata'];
     skyscannerServer = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${originAirport}-sky/${destAirport}-sky/${todayDate}`;
 
 }
 
+// Gets the airport name from the Google object. Removes unneeded characters from the string and compairs it
+// against allAirports. Returns the IATA code for the airport
+function getIATACode(googleReturn) {
+    let googleName = googleReturn['result']['name'];
+    googleName = googleName.split('-').join(' ');
+
+    for (let airport in allAirports) {
+        if (googleName === allAirports[airport]['name']) {
+            return allAirports[airport]['iata'];
+        }
+    }
+}
+
 // Checks for quotes. If no quotes avaliable, check another airport. Once found, sends to showFlightQuotes
 function checkForQuotes(obj) {
     if (obj['Quotes'].length === 0) {
-        console.log('No flights avaliable. Getting new airport.')
+        // console.log('No flights avaliable. Getting new airport.')
         getRandomAirport();
+        if (randAirportNum === -1) {
+            randAirportNum = 7;
+        } else {
+            // pass
+        }
         getQuotes();
     } else if (obj['Quotes'].length > 0) {
         showFlightQuotes(obj);
@@ -82,6 +101,7 @@ function getQuotes() {
 // Main function to run
 function main() {
     todayDate = getTodayDate();
+    // originAirport = getIATACode(googleReturn);
     getRandomAirport();
     getQuotes();
 }
