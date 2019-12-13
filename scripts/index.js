@@ -35,6 +35,37 @@ function getTodayDate() {
 
 ///     Searches for nearest airport by location, returns city name/airport name
 
+// sets the currentLocationSearch
+function getCurrentSearchLocation(result) {
+    currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
+    console.log(currentLocationSearch);
+    return currentLocationSearch;
+}
+
+// Fetches from currentLocationSearch
+function getPlaceID(response) {
+    fetch(proxyurl + response)
+        .then(r=>r.json()).then(r=>placeID = r["candidates"][0]["place_id"])
+        .then(placeIDToDetails)
+        .then(detailsURLToObject)
+}
+// makes URL with placeID
+function placeIDToDetails (r) {
+    currentLocationDetails = `https://maps.googleapis.com/maps/api/place/details/json?key=${googleAPIKey}&place_id=${placeID}`;
+    console.log(currentLocationDetails);
+    return placeID;
+}
+let objectForBentley = '';
+
+function promiseRemove(promiseData) {
+    objectForBentley = promiseData;
+
+}
+
+
+function detailsURLToObject() {
+    placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
+}
 
 
 // Gets the user's IP address from their machine using ipdata.co API
@@ -46,7 +77,9 @@ function getUserIP() {
             userLong = obj.longitude;
             userIP = obj.ip;
         })
-        
+        .then(getCurrentSearchLocation)
+        .then(getPlaceID)
+
         
     return userIP;
 }

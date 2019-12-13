@@ -8,18 +8,17 @@
 
 
 // sets the currentLocationSearch
-function getCurrentSearchLocation(result) {
-    currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
-    return currentLocationSearch;
-}
+// function getCurrentSearchLocation(result) {
+//     currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
+//     return currentLocationSearch;
+// }
 
 // "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&input=airport&inputtype=textquery&locationbias=point:33.8336,-84.3797"
 
-let placeResponse = '';
-// Fetches from currentLocationSearch
-function getPlaceID(response) {
-    fetch(proxyurl + response).then(r=>r.json()).then(r=>placeResponse = r["candidates"][0]["place_id"]);
-}
+// // Fetches from currentLocationSearch
+// function getPlaceID(response) {
+//     fetch(proxyurl + response).then(r=>r.json()).then(r=>placeID = r["candidates"][0]["place_id"]);
+// }
 
 
 // currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
@@ -33,16 +32,17 @@ function placeIDToDetails (placeID) {
 }
 /// append that ^ to getUserIP as .then
 
-let goodEnough = '';
+// let goodEnough = '';
 
-function promiseRemove(promiseData) {
-    goodEnough = promiseData;
-    var cityNameForBentley = goodEnough["result"]["address_components"][2]["long_name"];
-}
+// function promiseRemove(promiseData) {
+//     goodEnough = promiseData;
+//     var cityNameForBentley = goodEnough["result"]["address_components"][2]["long_name"];
+// }
 
-function tryTHIS() {
-    placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
-}
+
+// function detailsURLToObject() {
+//     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
+// }
 
 
 
@@ -53,9 +53,15 @@ function tryTHIS() {
 /*
 
 1. getSearchLocation()
+"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&input=airport&inputtype=textquery&locationbias=point:33.8336,-84.3797"
+
 2. getPlaceID(currentLocationSearch)
-3. placeIDToDetails(placeResponse)
-4. tryTHIS()
+"ChIJAVkD4S_99IgRSLCSGO-jF0E"
+
+3. placeIDToDetails(placeID)
+"https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&place_id=ChIJAVkD4S_99IgRSLCSGO-jF0E"
+
+4. detailsURLToObject()
 5. goodEnough is the object you want
 
 */
