@@ -1,17 +1,30 @@
 // search constants
-let currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
-let placeID = '';
-let currentLocationDetails = '';
-let placeDetails = '';
+
+// let placeID = '';
+// let currentLocationDetails = '';
+// let placeDetails = '';
 // cors anywhere
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+// const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
-// placeID from JSON response
-function currentLocationToPlaceID (response) {
-    placeID = response["candidates"][0]["place_id"];
-    return placeID;
+// sets the currentLocationSearch
+function getCurrentSearchLocation(result) {
+    currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
+    return currentLocationSearch;
 }
+
+// "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&input=airport&inputtype=textquery&locationbias=point:33.8336,-84.3797"
+
+let placeResponse = '';
+// Fetches from currentLocationSearch
+function getPlaceID(response) {
+    fetch(proxyurl + response).then(r=>r.json()).then(r=>placeResponse = r["candidates"][0]["place_id"]);
+}
+
+
+// currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
+
+
 /// append that ^ to getUserIP as .then
 
 function placeIDToDetails (placeID) {
@@ -19,8 +32,8 @@ function placeIDToDetails (placeID) {
     console.log(currentLocationDetails);
 }
 /// append that ^ to getUserIP as .then
+
 let goodEnough = '';
-// let airportName = goodEnough["result"]["name"];
 
 function promiseRemove(promiseData) {
     goodEnough = promiseData;
@@ -31,33 +44,18 @@ function tryTHIS() {
     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
 }
 
-// let fart = currentLocationToPlaceID(sampleResponseFirstFetch)
 
-let sampleResponseFirstFetch = {
-    "candidates": [
-       {
-          "place_id": "ChIJ7wzsxeFSwokRhvLXxTe087M"
-       }
-    ],
-    "status": "OK"
- }
 
- let testOne;
- let testTwo;
+//  function defineTwo() {
+//     currentLocationDetails = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&place_id=ChIJ7wzsxeFSwokRhvLXxTe087M"
+//  }
 
- function defineTwo() {
-    currentLocationDetails = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&place_id=ChIJ7wzsxeFSwokRhvLXxTe087M"
- }
+/*
 
- /*
+1. getSearchLocation()
+2. getPlaceID(currentLocationSearch)
+3. placeIDToDetails(placeResponse)
+4. tryTHIS()
+5. goodEnough is the object you want
 
- Dear diary, 
- before you forget, here's the formula to get it working:
-
-    defineTwo()
-    tryTHIS()
-    /////goodEnough is the answer you want
-
- Refactor it in the morning. 
-
- */
+*/

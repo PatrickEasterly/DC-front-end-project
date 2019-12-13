@@ -8,6 +8,14 @@ const geoIPServer = `https://api.ipdata.co/?api-key=${ipLookupAPI}`;
 let userIP = '';
 let userLat = '';
 let userLong = '';
+// cors anywhere
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
+let placeID = '';
+let currentLocationSearch = '';
+let currentLocationDetails = '';
+let placeDetails = '';
+
+
 
 // Get random number to select destination airport from object (airportCodes) and dave to randAirportNum variable
 function getRandomInt(min, max) {
@@ -25,6 +33,10 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
+///     Searches for nearest airport by location, returns city name/airport name
+
+
+
 // Gets the user's IP address from their machine using ipdata.co API
 function getUserIP() {
     fetch(geoIPServer)
@@ -34,6 +46,7 @@ function getUserIP() {
             userLong = obj.longitude;
             userIP = obj.ip;
         })
+        
         
     return userIP;
 }
