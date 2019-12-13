@@ -1,5 +1,5 @@
 // Set Global variables
-let originAirport = `ATL`;
+let originAirport = '';
 let destAirport = '';
 let randAirportNum = '';
 let todayDate = '';
@@ -33,10 +33,6 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-// Searches for nearest airport by location, returns city name/airport name
-// End result object
-
-
 // Sets the currentLocationSearch
 function getCurrentSearchLocation(result) {
     currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
@@ -64,7 +60,11 @@ function promiseRemove(promiseData) {
 
 // Fetches the final object and sends to promiseRemove for variable set
 function detailsURLToObject() {
-    placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
+    placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove).then(()=>{
+        originAirport = getIATACode(userLocationInfo);
+        getRandomAirport();
+        getQuotes();
+    });
 }
 
 // Gets the user's IP address from their machine using ipdata.co API
@@ -94,10 +94,9 @@ function getRandomAirport() {
 
 // Gets the airport name from the Google object. Removes unneeded characters from the string and compairs it
 // against allAirports. Returns the IATA code for the airport
-function getIATACode(googleReturn) {
-    let googleName = googleReturn['result']['name'];
+function getIATACode(googleObj) {
+    let googleName = googleObj['result']['name'];
     googleName = googleName.split('-').join(' ');
-
     for (let airport in allAirports) {
         if (googleName === allAirports[airport]['name']) {
             return allAirports[airport]['iata'];
@@ -108,13 +107,12 @@ function getIATACode(googleReturn) {
 // Checks for quotes. If no quotes avaliable, check another airport. Once found, sends to showFlightQuotes
 function checkForQuotes(obj) {
     if (obj['Quotes'].length === 0) {
-        // console.log('No flights avaliable. Getting new airport.')
         getRandomAirport();
         getQuotes();
     } else if (obj['Quotes'].length > 0) {
         showFlightQuotes(obj);
     } else {
-        console.log('Unknown Error.')
+        console.log('Unknown Error With Checking Quotes.')
     }
 }
 
@@ -141,7 +139,6 @@ function getQuotes() {
     })
         .then(r => r.json())
         .then(checkForQuotes)
-// console.log(checkForQuotes);
 }
 
 
@@ -149,9 +146,6 @@ function getQuotes() {
 function main() {
     getUserIP();
     todayDate = getTodayDate();
-    // originAirport = getIATACode(googleReturn);
-    getRandomAirport();
-    getQuotes();
 }
 
 // Run
