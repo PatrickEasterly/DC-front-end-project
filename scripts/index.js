@@ -34,6 +34,8 @@ function getTodayDate() {
 }
 
 ///     Searches for nearest airport by location, returns city name/airport name
+// End result object
+let objectForBentley = '';
 
 // sets the currentLocationSearch
 function getCurrentSearchLocation(result) {
@@ -55,18 +57,15 @@ function placeIDToDetails (r) {
     console.log(currentLocationDetails);
     return placeID;
 }
-let objectForBentley = '';
 
 function promiseRemove(promiseData) {
     objectForBentley = promiseData;
 
 }
 
-
 function detailsURLToObject() {
     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
 }
-
 
 // Gets the user's IP address from their machine using ipdata.co API
 function getUserIP() {
@@ -83,6 +82,8 @@ function getUserIP() {
         
     return userIP;
 }
+
+///
 
 // Runs getRandomInt to use as lookup for airportCodes object. Sets variables for skyscannerServer URL
 function getRandomAirport() {
