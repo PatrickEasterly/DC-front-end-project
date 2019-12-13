@@ -7,6 +7,7 @@ let skyscannerServer = '';
 const geoIPServer = `https://api.ipdata.co/?api-key=${ipLookupAPI}`;
 let userIP = '';
 
+
 // Get random number to select destination airport from object (airportCodes) and dave to randAirportNum variable
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -73,11 +74,13 @@ function getQuotes() {
     fetch(skyscannerServer, {
         headers: {
             'x-rapidapi-key': `${skyscannerAPI}`
-          },
+        },
     })
         .then(r => r.json())
         .then(checkForQuotes)
+// console.log(checkForQuotes);
 }
+
 
 // Main function to run
 function main() {
