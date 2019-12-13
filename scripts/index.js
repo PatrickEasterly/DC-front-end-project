@@ -14,7 +14,7 @@ let placeID = '';
 let currentLocationSearch = '';
 let currentLocationDetails = '';
 let placeDetails = '';
-
+let userLocationInfo = '';
 
 
 // Get random number to select destination airport from object (destAirports) and save to randAirportNum variable
@@ -33,14 +33,13 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-///     Searches for nearest airport by location, returns city name/airport name
+// Searches for nearest airport by location, returns city name/airport name
 // End result object
-let objectForBentley = '';
 
-// sets the currentLocationSearch
+
+// Sets the currentLocationSearch
 function getCurrentSearchLocation(result) {
     currentLocationSearch = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${googleAPIKey}&input=airport&inputtype=textquery&locationbias=point:${userLat},${userLong}`;
-    console.log(currentLocationSearch);
     return currentLocationSearch;
 }
 
@@ -51,23 +50,25 @@ function getPlaceID(response) {
         .then(placeIDToDetails)
         .then(detailsURLToObject)
 }
-// makes URL with placeID
+
+// Makes URL with placeID
 function placeIDToDetails (r) {
     currentLocationDetails = `https://maps.googleapis.com/maps/api/place/details/json?key=${googleAPIKey}&place_id=${placeID}`;
-    console.log(currentLocationDetails);
     return placeID;
 }
 
+// Sets variable for user location data
 function promiseRemove(promiseData) {
-    objectForBentley = promiseData;
-
+    userLocationInfo = promiseData;
 }
 
+// Fetches the final object and sends to promiseRemove for variable set
 function detailsURLToObject() {
     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove);
 }
 
 // Gets the user's IP address from their machine using ipdata.co API
+// Passes object data to Google Maps, gets current location, gets nearest airport, returns airport data
 function getUserIP() {
     fetch(geoIPServer)
         .then(r => r.json())
@@ -83,13 +84,9 @@ function getUserIP() {
     return userIP;
 }
 
-///
-
 // Runs getRandomInt to use as lookup for destAirports object. Sets variables for skyscannerServer URL
-
 function getRandomAirport() {
-    randAirportNum = -1
-    randAirportNum = getRandomInt(0, 50);
+    randAirportNum = getRandomInt(0, 49);
     destAirport = destAirports[randAirportNum]['iata'];
     skyscannerServer = `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/${originAirport}-sky/${destAirport}-sky/${todayDate}`;
 
@@ -113,11 +110,6 @@ function checkForQuotes(obj) {
     if (obj['Quotes'].length === 0) {
         // console.log('No flights avaliable. Getting new airport.')
         getRandomAirport();
-        if (randAirportNum === -1) {
-            randAirportNum = 7;
-        } else {
-            // pass
-        }
         getQuotes();
     } else if (obj['Quotes'].length > 0) {
         showFlightQuotes(obj);
