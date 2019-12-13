@@ -20,8 +20,11 @@ function placeIDToDetails (placeID) {
 }
 /// append that ^ to getUserIP as .then
 let goodEnough = '';
+// let airportName = goodEnough["result"]["name"];
+
 function promiseRemove(promiseData) {
     goodEnough = promiseData;
+    var cityNameForBentley = goodEnough["result"]["address_components"][2]["long_name"];
 }
 
 function tryTHIS() {
@@ -39,12 +42,9 @@ let sampleResponseFirstFetch = {
     "status": "OK"
  }
 
-
  let testOne;
  let testTwo;
- function defineOne() {
-    testOne = currentLocationToPlaceID(sampleResponseFirstFetch);
- }
+
  function defineTwo() {
     currentLocationDetails = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAY5L9IA1K2WZ9aUuNFvkIiubOCmUtz7so&place_id=ChIJ7wzsxeFSwokRhvLXxTe087M"
  }
