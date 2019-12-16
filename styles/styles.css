@@ -269,7 +269,19 @@ h3 {
 	color: #333;
 }
 
+.patflex {
+	display: flex;
+	flex-direction: column;
+}
+.patflex form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
+}
+.patflex input {
+	width: 80%;
+}
 
 footer {
 	color:white;

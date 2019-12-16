@@ -34,7 +34,7 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-/////////////////
+
 
 // get the input of city
 // set that city to the search string
@@ -60,6 +60,22 @@ function geocodeGoogle(cityString) {
         .then(getPlaceID)
 }
 
+/////////////////
+let form = document.querySelector(".js-form");
+let zeeValue = document.querySelector(".zeeValue");
+let zeeButton = document.querySelector(".zeeButton");
+let cityChoice = '';
+zeeButton.addEventListener("click", valueLog);
+// function renderAForm() {
+//     let cityForm = document.createElement("form");
+// }
+
+
+function valueLog() {
+    // console.log(zeeValue.value);
+    cityChoice = zeeValue.value;
+    geocodeGoogle(cityChoice);
+}
 
 ////////////////
 
@@ -174,8 +190,8 @@ function showFlightQuotes(obj) {
     }
 }
 
-    }
-}
+    
+
 
 function getGoogleFlightLink() {
     googleFlightLink = `https://www.google.com/flights?hl=en#flt=/m/013yq.${destAirport}.${todayDate};c:USD;e:1;sd:1;t:f;tt:o`;
