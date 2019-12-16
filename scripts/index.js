@@ -34,17 +34,14 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-/////////////////
-
 // get the input of city
 // set that city to the search string
-
 let somewhereElse = '';
 let geocodePlaceInfo = '';
+
 // Get airport based on user input (city)
 /// First, geocode from the input of the city name
 /// Then take the lat and long of the output, set userLat and userLong to those
-
 function coordFromGeoObj(obj) {
     userLat = obj["results"][0]["geometry"]["location"]["lat"];
     userLong = obj["results"][0]["geometry"]["location"]["lng"];
@@ -59,9 +56,6 @@ function geocodeGoogle(cityString) {
         .then(getCurrentSearchLocation)
         .then(getPlaceID)
 }
-
-
-////////////////
 
 // Sets the currentLocationSearch
 function getCurrentSearchLocation(result) {
@@ -91,9 +85,7 @@ function promiseRemove(promiseData) {
 // Fetches the final object and sends to promiseRemove for variable set
 function detailsURLToObject() {
     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove).then(()=>{
-        console.log(userLocationInfo);
         originAirport = getIATACode(userLocationInfo);
-        console.log(`origin: ${originAirport}`);
         getRandomAirport();
         getQuotes();
     });
@@ -130,7 +122,6 @@ function getIATACode(googleObj) {
     let googleName = googleObj['result']['name'];
     googleName = googleName.split('-').join(' ');
     googleName = googleName.split('.').join('');
-    console.log(googleName)
     for (let airport in allAirports) {
         if (googleName === allAirports[airport]['name']) {
             return allAirports[airport]['iata'];
@@ -153,7 +144,6 @@ function checkForQuotes(obj) {
 
 // Shows the flight quotes
 function showFlightQuotes(obj) {
-    // console.log(obj);
     const modal = document.querySelector('.content');
     modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
@@ -166,12 +156,15 @@ function showFlightQuotes(obj) {
         const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
         // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
     }
+    for (quote of obj['Quotes']) { 
+        modal.innerHTML += (`Price: ~$${quote['MinPrice']}<br>`);
+    }
+    modal.innerHTML += (`<a href=${googleFlightLink} target="_blank">Book Flight</a>`);
 }
 
 function getGoogleFlightLink() {
     googleFlightLink = `https://www.google.com/flights?hl=en#flt=/m/013yq.${destAirport}.${todayDate};c:USD;e:1;sd:1;t:f;tt:o`;
 }
-
 
 // Gets quotes from server and sends object to checkForQuotes
 function getQuotes() {
@@ -184,14 +177,12 @@ function getQuotes() {
         .then(checkForQuotes)
 }
 
-
 // Main function to run
 function main() {
     getUserIP();
     todayDate = getTodayDate();
 }
 
-
-
 // Run
 main();
+
