@@ -89,9 +89,7 @@ function main() {
     getQuotes();
 }
 
-$('#myModal').on('style.css', function main() {
-    $('#myInput').trigger('focus')
-})
+
 
 // Run
 main();
