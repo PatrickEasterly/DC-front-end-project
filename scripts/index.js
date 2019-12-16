@@ -9,7 +9,7 @@ let userIP = '';
 let userLat = '';
 let userLong = '';
 // cors anywhere
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const proxyurl = "https://frozen-tor-15479.herokuapp.com/";
 let placeID = '';
 let currentLocationSearch = '';
 let currentLocationDetails = '';
@@ -151,24 +151,36 @@ function checkForQuotes(obj) {
     }
 }
 
+function myLink() {
+    let str = "Click Here To Book Your Flight";
+    let result = str.link("https://www.google.com/flights?hl=en#flt=/m/013yq..2020-01-01*./m/013yq.2020-01-05;c:USD;e:1;ls:1w;sd:0;t:h");
+    document.querySelector('.content');
+}
+
 // Shows the flight quotes
 function showFlightQuotes(obj) {
     // console.log(obj);
     const modal = document.querySelector('.content');
-    modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}`);(`To: ${obj['Places']['1']['CityName']}`);// 
+    modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
+    modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
     console.log(`From: ${obj['Places']['0']['CityName']}`)
     console.log(`To: ${obj['Places']['1']['CityName']}`)
-    for (quote of obj['Quotes']) {                 
+    for (quote of obj['Quotes']) { 
+        modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
         console.log(quote);
         console.log(`Minimum Price: $${quote['MinPrice']}`);
-        console.log(`Direct Flight?: ${quote['Direct']}`);
-    console.log(googleFlightLink);
+        const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
+        // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
+    }
+}
+
     }
 }
 
 function getGoogleFlightLink() {
     googleFlightLink = `https://www.google.com/flights?hl=en#flt=/m/013yq.${destAirport}.${todayDate};c:USD;e:1;sd:1;t:f;tt:o`;
 }
+
 
 // Gets quotes from server and sends object to checkForQuotes
 function getQuotes() {
