@@ -15,6 +15,7 @@ let currentLocationSearch = '';
 let currentLocationDetails = '';
 let placeDetails = '';
 let userLocationInfo = '';
+let googleFlightLink = '';
 
 
 // Get random number to select destination airport from object (destAirports) and save to randAirportNum variable
@@ -143,6 +144,7 @@ function checkForQuotes(obj) {
         getRandomAirport();
         getQuotes();
     } else if (obj['Quotes'].length > 0) {
+        getGoogleFlightLink();
         showFlightQuotes(obj);
     } else {
         console.log('Unknown Error With Checking Quotes.')
@@ -159,10 +161,13 @@ function showFlightQuotes(obj) {
     for (quote of obj['Quotes']) {                 
         console.log(quote);
         console.log(`Minimum Price: $${quote['MinPrice']}`);
-        const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
-        // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
         console.log(`Direct Flight?: ${quote['Direct']}`);
+    console.log(googleFlightLink);
     }
+}
+
+function getGoogleFlightLink() {
+    googleFlightLink = `https://www.google.com/flights?hl=en#flt=/m/013yq.${destAirport}.${todayDate};c:USD;e:1;sd:1;t:f;tt:o`;
 }
 
 // Gets quotes from server and sends object to checkForQuotes
