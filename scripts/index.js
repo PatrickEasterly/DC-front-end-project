@@ -176,7 +176,3 @@ function main() {
     getUserIP();
     todayDate = getTodayDate();
 }
-
-// Run
-main();
-
