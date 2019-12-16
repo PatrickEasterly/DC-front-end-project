@@ -34,17 +34,14 @@ function getTodayDate() {
     return yyyy + '-' + mm + '-' + dd
 }
 
-/////////////////
-
 // get the input of city
 // set that city to the search string
-
 let somewhereElse = '';
 let geocodePlaceInfo = '';
+
 // Get airport based on user input (city)
 /// First, geocode from the input of the city name
 /// Then take the lat and long of the output, set userLat and userLong to those
-
 function coordFromGeoObj(obj) {
     userLat = obj["results"][0]["geometry"]["location"]["lat"];
     userLong = obj["results"][0]["geometry"]["location"]["lng"];
@@ -59,9 +56,6 @@ function geocodeGoogle(cityString) {
         .then(getCurrentSearchLocation)
         .then(getPlaceID)
 }
-
-
-////////////////
 
 // Sets the currentLocationSearch
 function getCurrentSearchLocation(result) {
@@ -174,14 +168,8 @@ function getQuotes() {
         .then(checkForQuotes)
 }
 
-
 // Main function to run
 function main() {
     getUserIP();
     todayDate = getTodayDate();
 }
-
-
-
-// Run
-// main();
