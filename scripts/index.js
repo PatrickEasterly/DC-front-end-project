@@ -148,9 +148,9 @@ function showFlightQuotes(obj) {
     modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
     for (quote of obj['Quotes']) { 
-        modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
+        modal.innerHTML += (`Price: ~$${quote['MinPrice']}<br>`);
     }
-    modal.innerHTML += (`<a href=${googleFlightLink}>Book Flight</a>`);
+    modal.innerHTML += (`<a href=${googleFlightLink} target="_blank">Book Flight</a>`);
 }
 
 function getGoogleFlightLink() {
