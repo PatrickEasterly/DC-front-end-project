@@ -65,7 +65,6 @@ function detailsURLToObject() {
         originAirport = getIATACode(userLocationInfo);
         getRandomAirport();
         getQuotes();
-        getGoogleFlightLink();
     });
 }
 
@@ -112,6 +111,7 @@ function checkForQuotes(obj) {
         getRandomAirport();
         getQuotes();
     } else if (obj['Quotes'].length > 0) {
+        getGoogleFlightLink();
         showFlightQuotes(obj);
     } else {
         console.log('Unknown Error With Checking Quotes.')
@@ -157,4 +157,4 @@ function main() {
 
 
 // Run
-main();
+// main();
