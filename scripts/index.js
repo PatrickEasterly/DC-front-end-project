@@ -9,7 +9,7 @@ let userIP = '';
 let userLat = '';
 let userLong = '';
 // cors anywhere
-const proxyurl = "https://frozen-tor-15479.herokuapp.com/";
+const proxyurl = "googleName = googleName.split('.').join('');";
 let placeID = '';
 let currentLocationSearch = '';
 let currentLocationDetails = '';
@@ -151,12 +151,6 @@ function checkForQuotes(obj) {
     }
 }
 
-function myLink() {
-    let str = "Click Here To Book Your Flight";
-    let result = str.link("https://www.google.com/flights?hl=en#flt=/m/013yq..2020-01-01*./m/013yq.2020-01-05;c:USD;e:1;ls:1w;sd:0;t:h");
-    document.querySelector('.content');
-}
-
 // Shows the flight quotes
 function showFlightQuotes(obj) {
     // console.log(obj);
@@ -171,9 +165,6 @@ function showFlightQuotes(obj) {
         console.log(`Minimum Price: $${quote['MinPrice']}`);
         const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
         // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
-    }
-}
-
     }
 }
 
@@ -203,4 +194,4 @@ function main() {
 
 
 // Run
-// main();
+main();
