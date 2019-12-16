@@ -118,7 +118,8 @@ function checkForQuotes(obj) {
 
 // Shows the flight quotes
 function showFlightQuotes(obj) {
-    console.log(obj);
+    // console.log(obj);
+    const modal = document.querySelector('.content');
     console.log(`From: ${obj['Places']['0']['CityName']}`)
     console.log(`To: ${obj['Places']['1']['CityName']}`)
     for (quote of obj['Quotes']) {
@@ -147,6 +148,8 @@ function main() {
     getUserIP();
     todayDate = getTodayDate();
 }
+
+
 
 // Run
 main();
