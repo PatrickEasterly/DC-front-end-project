@@ -9,7 +9,7 @@ let userIP = '';
 let userLat = '';
 let userLong = '';
 // cors anywhere
-const proxyurl = "googleName = googleName.split('.').join('');";
+const proxyurl = "https://frozen-tor-15479.herokuapp.com/";
 let placeID = '';
 let currentLocationSearch = '';
 let currentLocationDetails = '';
@@ -159,7 +159,7 @@ function showFlightQuotes(obj) {
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
     console.log(`From: ${obj['Places']['0']['CityName']}`)
     console.log(`To: ${obj['Places']['1']['CityName']}`)
-    for (quote of obj['Quotes']) { 
+    for (quote of obj['Quotes']) {                      
         modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
         console.log(quote);
         console.log(`Minimum Price: $${quote['MinPrice']}`);
