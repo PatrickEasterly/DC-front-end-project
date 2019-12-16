@@ -1,89 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Got To Go Right Now</title>
-    <!-- Fonts & CSS -->
-    <link href="styles/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
-    
-</head>
-<body>
-
-
-
-<div id="content-wrap"></div>
-    <!-- Animation HTML -->
-    <div id="background-wrap">
-        <div class="x1">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Got To Go Right Now</title>
+      <!-- Fonts & CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+      <link href="styles/styles.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div id="content-wrap"></div>
+      <!-- Animation HTML -->
+      <div id="background-wrap">
+         <div class="x1">
             <div class="cloud"></div>
-        </div>
-
-        <div class="x2">
+         </div>
+         <div class="x2">
             <div class="cloud"></div>
-        </div>
-
-        <div class="x3">
+         </div>
+         <div class="x3">
             <div class="cloud"></div>
-        </div>
-
-        <div class="x4">
+         </div>
+         <div class="x4">
             <div class="cloud"></div>
-        </div>
-
-        <div class="x5">
+         </div>
+         <div class="x5">
             <div class="cloud"></div>
-        </div>
-    </div>
-<!-- End Animation HTML -->
-
-
-    <img class = "image" src="./styles/images/—Pngtree—air plane in flight_4430796.png" alt="Airplane">
-
-    <h1 class= "header1-container">G2G RN?</h1>
-        <h2>The closest and cheapest flights at the click of a button</h2>
-    
-            <h3>Do You Have To...</h3>
-            <div class="button-container">
-                <div class="box">
-                <a class="button" onclick= "main()" style="text-decoration: none" href="#popup1">Leave From Here?</a>
-                </div>
-            
-                <div id="popup1" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        Loading...
-                    </div>
-                </div>
-                </div>
-                <div class="box">
-                <a class="button" onclick="main()"  style="text-decoration: none" href="#popup2">Leave From Somewhere Else?</a>
-                </div>
-            
-                <div id="popup2" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        Loading...
-                </div>
-                </div>
+         </div>
+      </div>
+      <!-- End Animation HTML -->
+      <img class = "image" src="./styles/images/—Pngtree—air plane in flight_4430796.png" alt="Airplane">
+      <h1 class= "header1-container">G2G RN?</h1>
+      <h2>The closest and cheapest flights at the click of a button</h2>
+      <h3>Do You Have To...</h3>
+      <div class="button-container">
+         <div class="box-1">
+            <a class="button" onclick= "main()" style="text-decoration: none" href="#popup1">Leave From Here?</a>
+         </div>
+         <div id="popup1" class="overlay">
+            <div class="popup">
+               <a class="close" href="#">&times;</a>
+               <div class="content">
+                  Loading...
+               </div>
             </div>
-        </div>
-                <footer>
-                    <a>Created By: Bentley Herron, Patrick Easterly, and Veronica Kemp</a>
-                </footer>
-    <!-- Script Tags -->
-    <script src="scripts/config.js"></script>
-    <script src="scripts/dest-airports.js"></script>
-    <script src="scripts/all-airports.js"></script>
-    <script src="scripts/index.js"></script>
-    
-</div>
-    </body>
-
-
+         </div>
+         <div class="box-2">
+            <a class="button" onclick="main()"  style="text-decoration: none" href="#popup2">Leave From Somewhere Else?</a>
+         </div>
+         <div id="popup2" class="overlay">
+            <div class="popup">
+               <a class="close" href="#">&times;</a>
+               <div class="content">
+                  Loading...
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <a>Created By: Bentley Herron, Patrick Easterly, and Veronica Kemp</a>
+      </footer>
+      <!-- Script Tags -->
+      <script src="scripts/config.js"></script>
+      <script src="scripts/dest-airports.js"></script>
+      <script src="scripts/all-airports.js"></script>
+      <script src="scripts/index.js"></script>
+      </div>
+   </body>
+</html>
