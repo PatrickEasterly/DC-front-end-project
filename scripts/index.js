@@ -147,14 +147,8 @@ function showFlightQuotes(obj) {
     const modal = document.querySelector('.content');
     modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
-    console.log(`From: ${obj['Places']['0']['CityName']}`)
-    console.log(`To: ${obj['Places']['1']['CityName']}`)
     for (quote of obj['Quotes']) {                      
         modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
-        console.log(quote);
-        console.log(`Minimum Price: $${quote['MinPrice']}`);
-        const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
-        // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
     }
     for (quote of obj['Quotes']) { 
         modal.innerHTML += (`Price: ~$${quote['MinPrice']}<br>`);
