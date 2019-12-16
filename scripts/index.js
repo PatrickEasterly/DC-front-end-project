@@ -148,12 +148,6 @@ function checkForQuotes(obj) {
     }
 }
 
-function myLink() {
-    let str = "Click Here To Book Your Flight";
-    let result = str.link("https://www.google.com/flights?hl=en#flt=/m/013yq..2020-01-01*./m/013yq.2020-01-05;c:USD;e:1;ls:1w;sd:0;t:h");
-    document.querySelector('.content');
-}
-
 // Shows the flight quotes
 function showFlightQuotes(obj) {
     const modal = document.querySelector('.content');
