@@ -147,6 +147,9 @@ function showFlightQuotes(obj) {
     const modal = document.querySelector('.content');
     modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
+    for (quote of obj['Quotes']) {                      
+        modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
+    }
     for (quote of obj['Quotes']) { 
         modal.innerHTML += (`Price: ~$${quote['MinPrice']}<br>`);
     }
