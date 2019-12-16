@@ -51,13 +51,14 @@ function checkForQuotes(obj) {
     } else if (obj['Quotes'].length > 0) {
         showFlightQuotes(obj);
     } else {
-        console.log('Unknown Error.')
+        console.log('Unknown Error.');
     }
 }
 
 // Shows the flight quotes
 function showFlightQuotes(obj) {
     // console.log(obj);
+    const modal = document.querySelector('.content').innerHTML;
     console.log(`From: ${obj['Places']['0']['CityName']}`)
     console.log(`To: ${obj['Places']['1']['CityName']}`)
     for (quote of obj['Quotes']) {
