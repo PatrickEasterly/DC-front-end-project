@@ -3,6 +3,12 @@
 	margin-bottom: 20px;
 }
 
+.content {
+	font-family:'Abril Fatface', cursive;
+	font-size: 30px;
+	color: #4BB6CA;
+}
+
 a {
 	color: white;
 }
