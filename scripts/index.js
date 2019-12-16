@@ -91,9 +91,7 @@ function promiseRemove(promiseData) {
 // Fetches the final object and sends to promiseRemove for variable set
 function detailsURLToObject() {
     placeDetails = fetch(proxyurl + currentLocationDetails).then(r=>r.json()).then(promiseRemove).then(()=>{
-        console.log(userLocationInfo);
         originAirport = getIATACode(userLocationInfo);
-        console.log(`origin: ${originAirport}`);
         getRandomAirport();
         getQuotes();
     });
@@ -130,7 +128,6 @@ function getIATACode(googleObj) {
     let googleName = googleObj['result']['name'];
     googleName = googleName.split('-').join(' ');
     googleName = googleName.split('.').join('');
-    console.log(googleName)
     for (let airport in allAirports) {
         if (googleName === allAirports[airport]['name']) {
             return allAirports[airport]['iata'];
@@ -159,28 +156,18 @@ function myLink() {
 
 // Shows the flight quotes
 function showFlightQuotes(obj) {
-    // console.log(obj);
     const modal = document.querySelector('.content');
     modal.innerHTML = (`From: ${obj['Places']['0']['CityName']}<br>`);
     modal.innerHTML += (`To: ${obj['Places']['1']['CityName']}<br>`);
-    console.log(`From: ${obj['Places']['0']['CityName']}`)
-    console.log(`To: ${obj['Places']['1']['CityName']}`)
     for (quote of obj['Quotes']) { 
         modal.innerHTML += (`Minimum Price: $${quote['MinPrice']}<br>`);                 
-        console.log(quote);
-        console.log(`Minimum Price: $${quote['MinPrice']}`);
-        const airlineNumber = quote['OutboundLeg']['CarrierIds']['0'];
-        // console.log(`Airline: $${obj['Carriers'][airlineNumber]['Name']}`);
     }
-}
-
-    }
+    modal.innerHTML += (`<a href=${googleFlightLink}>Book Flight</a>`);
 }
 
 function getGoogleFlightLink() {
     googleFlightLink = `https://www.google.com/flights?hl=en#flt=/m/013yq.${destAirport}.${todayDate};c:USD;e:1;sd:1;t:f;tt:o`;
 }
-
 
 // Gets quotes from server and sends object to checkForQuotes
 function getQuotes() {
