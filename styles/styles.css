@@ -64,7 +64,8 @@ body {
 	align-items: center;
 	justify-content: center;
 	margin: auto;
-	width: 50%;
+	padding: 20px;
+	width: 100%;
 	-moz-box-shadow: 0 0 3px black;
 	-webkit-box-shadow: 0 0 3px black;
 	box-shadow: 0 0 3px black;
