@@ -59,6 +59,11 @@ body {
 	overflow-x: hidden;
 }
 
+h2 {
+	vertical-align: middle; 
+	text-align: center; 
+}
+
 .box-1 {
 	display: flex;
 	align-items: center;
