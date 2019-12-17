@@ -39,6 +39,7 @@ h1, h2, .box-1 {
 	text-shadow: 2px 2px black;
 }
 
+
 .header1-container {
     font-family: 'Arvo', serif;
     align-self: center;
@@ -60,6 +61,9 @@ body {
 }
 
 .box-1 {
+	font-size: 50px;
+	padding: 20px;
+	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -72,12 +76,11 @@ body {
 	background: rgba(255,255,255,0.2);
 	border: 2px solid #fff;
 	border-radius: 20px/50px;
-	text-align: center;
 	background-clip: padding-box;
-	height: 200px;
 	font-family: 'Abril Fatface', cursive;
-	font-size: 40px;
 }
+
+
 
 footer {
 	text-align: center;
@@ -245,6 +248,8 @@ h2 {
 	justify-content: space-around;
 	flex-direction: row;
 	flex-wrap: wrap;
+	margin-left: 10%;
+	margin-right: 10%
 }
 
 
