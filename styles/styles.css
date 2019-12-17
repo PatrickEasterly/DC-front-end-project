@@ -35,15 +35,10 @@ body {
 	margin: auto;
 }
 
-h1, h2, h3, .box-1, .box-2 {
+h1, h2, .box-1 {
 	text-shadow: 2px 2px black;
 }
 
-.box-1, .box-2 {
-	-moz-box-shadow: 0 0 3px black;
-	-webkit-box-shadow: 0 0 3px black;
-	box-shadow: 0 0 3px black;
-}
 
 .header1-container {
     font-family: 'Arvo', serif;
@@ -65,16 +60,24 @@ body {
 }
 
 .box-1 {
+	justify-content: center;
 	margin: auto;
 	width: 50%;
 	padding: 40px;
+	-moz-box-shadow: 0 0 3px black;
+	-webkit-box-shadow: 0 0 3px black;
+	box-shadow: 0 0 3px black;
+	background: rgba(255,255,255,0.2);
+	border: 2px solid #fff;
+	border-radius: 20px/50px;
+	text-align: center;
+	background-clip: padding-box;
+	height: 200px;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
 }
 
-.box-2 {
-	margin: auto;
-	width: 50%;
-	padding: 10px;
-}
+
 
 footer {
 	text-align: center;
@@ -244,19 +247,6 @@ h2 {
 	flex-wrap: wrap;
 }
 
-.box-1, .box-2 {
-	width: 300px;
-	margin: 0 auto;
-	background: rgba(255,255,255,0.2);
-	border: 2px solid #fff;
-	border-radius: 20px/50px;
-	background-clip: padding-box;
-	text-align: center;
-	height: 200px;
-	font-family: 'Abril Fatface', cursive;
-	font-size: 40px;
-	
-}
 
 .overlay {
 	position: fixed;
@@ -281,7 +271,7 @@ h2 {
 	padding: 20px;
 	background: #fff;
 	border-radius: 5px;
-	width: 30%;
+	width: 40%;
 	position: relative;
 	transition: all 5s ease-in-out;
 }
