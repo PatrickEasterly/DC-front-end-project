@@ -1,6 +1,8 @@
 # G2G RN (Got To Go Right Now)
 
 ## Screenshot:
+![Desktop](https://user-images.githubusercontent.com/10934614/71009110-b79f5d00-20b7-11ea-87d1-ad4f41c42239.png)
+![Mobile](https://user-images.githubusercontent.com/10934614/71009111-b79f5d00-20b7-11ea-9039-35694873dcef.png)
 
 ## Problem Solved:
 For anyone who either can't think of or doesn't care about the destination of a trip. The app takes in consideration of price and shows you a flight leaving that day to a random destination along with giving you a link to a site where you can purchase the tickets.
