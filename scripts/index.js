@@ -9,7 +9,8 @@ let userIP = '';
 let userLat = '';
 let userLong = '';
 // cors anywhere
-const proxyurl = "https://frozen-tor-15479.herokuapp.com/";
+// const proxyurl = "https://frozen-tor-15479.herokuapp.com/";
+const proxyurl = "https://cors-anywhere.herokuapp.com/"
 let placeID = '';
 let currentLocationSearch = '';
 let currentLocationDetails = '';
